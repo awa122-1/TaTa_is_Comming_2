@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>TaTa 官方网站</title>
+<link rel="icon" href="icon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="icon.ico">
+<link rel="stylesheet" href="style.css">
+<style>
+/* 基础布局 */
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  transition: background 0.5s;
+}
+
+body.light {
+  background: linear-gradient(-45deg, rgba(253,222,222), lightpink, pink, #d35793, #642141);
+}
+
+body.dark {
+  background: linear-gradient(-45deg, #1a1a1a, #330033, #660066, #990099, #cc33cc);
+}
+
+body.light, body.dark {
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  color: white;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding: 100px 20px 20px 20px;
+  text-align: center;
+}
+
+/* 导航栏 */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index: 100;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+/* TaTa 来也卡片 */
+.card {
+  position: fixed;
+  top: 70px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 220px;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-weight: bold;
+  z-index: 99;
+}
+
+/* 切换模式按钮 */
+.toggle-btn {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 99;
+}
+
+.toggle-btn:hover {
+  box-shadow: 0 0 15px rgba(255,255,255,0.9);
+}
+
+/* 页面内容 */
+h1 {
+  margin-bottom: 10px;
+}
+p {
+  margin-bottom: 15px;
+}
+
+/* 底部 */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-weight: bold;
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding: 10px 0;
+  }
+}
+</style>
+</head>
+
+<body class="light">
+
+<div class="navbar">
+  <a href="index.html">首页</a>
+  <a href="about.html">关于</a>
+  <a href="contact.html">联系</a>
+  <a href="avatar.html">下载头像</a>
+</div>
+
+<div class="card">
+  <img src="logo.png" width="28" alt="logo">
+  TaTa 来也！
+</div>
+
+<div class="toggle-btn" onclick="toggleDarkMode()">切换深色模式</div>
+
+<div class="main-content">
+  <h1>欢迎来到 TaTa 的世界 ✨</h1>
+  <p>这是我们的官方网站。</p>
+  <p>一个充满创意与想法的小天地。</p>
+</div>
+
+<footer>
+  © <span id="year"></span> TaTa is Comming™. All Rights Reserved.
+</footer>
+
+<script>
+  // 设置年份
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 切换深色/浅色模式
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+  }
+</script>
+
+</body>
+</html>
